@@ -6,9 +6,9 @@ export default function SignIn({ providers }: any) {
   return (
     <>
       {Object.values(providers).map((provider: any) => (
-        <Center key={provider.name}>
+        <Center sx={{ height: "100vh" }} key={provider.name}>
           <Stack spacing="xl">
-            <Title align="center">Inventory app</Title>
+            <Title align="center">Magnus Centar</Title>
             {provider.name === "Google" && (
               <Button
                 onClick={() => signIn(provider.id)}

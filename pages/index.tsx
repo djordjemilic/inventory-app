@@ -1,8 +1,9 @@
 import Head from "next/head";
 import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
+import { CustomNextPage } from "../types/CustomNextPage";
 
-export default function Home() {
+const Home: CustomNextPage = () => {
   const { data, status } = useSession();
 
   return (
@@ -17,7 +18,13 @@ export default function Home() {
         {status === "authenticated" && (
           <button onClick={() => signOut()}>SIGN OUT</button>
         )}
+        <Link legacyBehavior href="/categories">
+          <a style={{ marginLeft: "1rem" }}>PROTECTED PAGE</a>
+        </Link>
       </main>
     </>
   );
-}
+};
+
+Home.requireAuth = true;
+export default Home;
